@@ -7,9 +7,7 @@ use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\PeminjamanController;
 
-Route::get('/hidden', function () {
-    return view('welcome');
-});
+// Halaman utama menampilkan daftar buku
 Route::get('/', [BukuController::class, 'index']);
 
 Route::get('/dashboard', [BukuController::class, 'index'])->name('dashboard');
@@ -49,4 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/pinjam/{buku}', [PeminjamanController::class, 'kembali'])->whereNumber('buku')->name('pinjam.kembali');
 });
 
+// Halaman detail buku
 Route::get('/buku/{buku}', [BukuController::class, 'detail'])->whereNumber('buku')->name('buku.detail');
+
+// Yang tau tau aja
+Route::get('/hidden', function () {
+    return view('welcome');
+});
